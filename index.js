@@ -26,13 +26,21 @@ function displayImgs(responseJson){
 function getDogMultipleImg(breed) {
     //console.log(breed);
     fetch(`https://dog.ceo/api/breed/${breed}/images`)
-      .then(response => response.json())
+      .then(response => {
+          if(!response.ok){
+                // alert('That breed not found');
+                // $('.results').addClass('hidden')
+                // return false;
+                throw new Error(response.statusText);
+          }
+         return response.json();
+         
+      })
       .then(responseJson => 
         displayImgs(responseJson))
       .catch(error => {
-        console.error(`$(responseJson.message)`)
+        alert('Breed not found');
       });
-      
   }
 
 function printThePic(){
