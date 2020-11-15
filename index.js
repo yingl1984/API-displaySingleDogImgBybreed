@@ -29,7 +29,7 @@ function getDogMultipleImg(breed) {
       .then(response => {
           if(!response.ok){
                 // alert('That breed not found');
-                // $('.results').addClass('hidden')
+                $('.results').addClass('hidden')
                 // return false;
                 throw new Error(response.statusText);
           }
